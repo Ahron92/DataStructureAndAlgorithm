@@ -71,5 +71,61 @@ list.addNode(2);
 list.addNode(3);
 list.addNode(4);
 list.deleteByAddress(1);
-list.deleteByData(2);
 list.desc()
+
+
+//Double linked list
+//링크드 리스트의 단점인 데이터 검색의 효율성을 해결하고자 하는 자료구조
+// 자료의 형태는 다음과 같다 
+// 이전 데이터 주소 / 데이터 / 다음데이터 주소
+
+class DoubleNode{
+  constructor(data, prev = null, next = null){
+    this.data = data;
+    this.prev = prev;
+    this.next = next;
+  }
+}
+
+class DoubleLinked{
+  constructor(){
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  addNode(data){
+    if(this.head == null){
+      this.head = new DoubleNode(data);
+      this.tail = this.head;
+      this.length++;
+    }else{
+      let node = this.head;
+      while(node.next){
+        node = node.next;
+      }
+      let newNode = new DoubleNode(data);
+      node.next = newNode;
+      this.tail  = newNode;
+      newNode.prev = node;
+      this.length++;
+    }
+  }
+
+  desc(){
+    let node = this.head;
+    while(node.next){
+      console.log(node);
+      node = node.next;
+    }
+    console.log('length : ' + this.length);
+    console.log(this.head, this.tail)
+  }
+}
+
+let dbNode = new DoubleLinked();
+dbNode.addNode(1);
+dbNode.addNode(2);
+dbNode.addNode(3);
+
+dbNode.desc();
