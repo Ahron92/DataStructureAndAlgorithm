@@ -114,12 +114,33 @@ class DoubleLinked{
 
   desc(){
     let node = this.head;
+    console.log(node)
     while(node.next){
-      console.log(node);
       node = node.next;
+      console.log(node);
     }
-    console.log('length : ' + this.length);
-    console.log(this.head, this.tail)
+
+  }
+
+  deleteByData(data){
+    let node = this.head;
+    let previous;
+    let after;
+    while(node){
+      if(node.data == data){
+        previous.next = node.next;
+        this.tail = node.next;
+        if(after){
+          after.prev = previous
+        };
+        this.length--;
+        return;
+      }else{
+        previous = node;
+        node = node.next;
+        after = node.next;
+      }
+    }
   }
 }
 
@@ -127,5 +148,5 @@ let dbNode = new DoubleLinked();
 dbNode.addNode(1);
 dbNode.addNode(2);
 dbNode.addNode(3);
-
-dbNode.desc();
+dbNode.deleteByData(2);
+dbNode.desc()
