@@ -58,7 +58,6 @@ class HashTable{
     }else{
       for(let i = 0; i < this.storage[index].length; i++){
         if(this.storage[index][i].join() == [key,value].join()){
-          console.log(111)
           return this.storage[index].splice(i, 1);
         }
       }
