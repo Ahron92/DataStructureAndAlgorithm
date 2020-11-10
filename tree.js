@@ -63,7 +63,7 @@ class NodeManager{
 
   // 와씨 만드는건 쉬운데 어떻게 없에지...
   //scenario
-  // 1. Leaf node 일때... (자식이 없다.)
+// 1. Leaf node 일때... (자식이 없다.)
 // 2. Child node 1개일때... (자식이 하나)
 // 3. child node 2개일때... (자식이 둘)
 
@@ -71,6 +71,7 @@ class NodeManager{
     let searched = false;
     let currentNode = this.root;
     let parentNode = this.root;
+    this.allData.splice(this.allData.indexOf(value), 1);
     while(currentNode){
       if(currentNode.value == value){
         searched = true;
@@ -151,7 +152,7 @@ class NodeManager{
         return searched;
       }
     }
-
+    
   }
 
   search(value){
@@ -183,4 +184,5 @@ for(let i of randomValue){
   BST.insert(i);
 }
 
-console.log(BST.allData)
+BST.delete(500);
+console.log(BST.allData);
